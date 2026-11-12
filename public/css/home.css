@@ -1,0 +1,146 @@
+
+/* =====================================
+   CAFE ETHEREAL - HOME PAGE
+===================================== */
+
+.hero-section {
+    min-height: 620px;
+    display: flex;
+    align-items: center;
+    padding: 80px 10%;
+    background: var(--cream);
+}
+
+.hero-content {
+    max-width: 700px;
+}
+
+.hero-subtitle,
+.section-subtitle {
+    color: var(--coffee);
+    letter-spacing: 3px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.hero-content h1 {
+    font-family: var(--heading-font);
+    color: var(--espresso);
+    font-size: clamp(45px, 7vw, 76px);
+    line-height: 1.15;
+    margin-bottom: 25px;
+}
+
+.hero-content h1 span {
+    color: var(--coffee);
+}
+
+.hero-description {
+    color: var(--charcoal);
+    font-size: 17px;
+    line-height: 1.8;
+    max-width: 560px;
+    margin-bottom: 30px;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.btn-primary,
+.btn-secondary {
+    display: inline-block;
+    padding: 14px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.btn-primary {
+    background: var(--espresso);
+    color: var(--white);
+}
+
+.btn-secondary {
+    border: 1px solid var(--espresso);
+    color: var(--espresso);
+}
+
+.btn-primary:hover {
+    background: var(--coffee);
+}
+
+.btn-secondary:hover {
+    background: var(--espresso);
+    color: var(--white);
+}
+
+.welcome-section,
+.featured-section {
+    padding: 85px 10%;
+    text-align: center;
+}
+
+.welcome-section h2,
+.featured-section h2 {
+    font-family: var(--heading-font);
+    color: var(--espresso);
+    font-size: 38px;
+    margin-bottom: 20px;
+}
+
+.welcome-section > p:last-child {
+    max-width: 750px;
+    margin: auto;
+    line-height: 1.9;
+    color: var(--charcoal);
+}
+
+.featured-section {
+    background: var(--light-brown);
+}
+
+.featured-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.featured-card {
+    background: var(--white);
+    padding: 35px 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+}
+
+.featured-card h3 {
+    font-family: var(--heading-font);
+    color: var(--espresso);
+    margin-bottom: 15px;
+}
+
+.featured-card p {
+    color: var(--charcoal);
+    line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        min-height: 500px;
+        padding: 60px 7%;
+    }
+
+    .featured-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .welcome-section,
+    .featured-section {
+        padding: 60px 7%;
+    }
+}
