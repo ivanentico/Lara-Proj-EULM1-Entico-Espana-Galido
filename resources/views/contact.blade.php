@@ -9,19 +9,19 @@
 @section('content')
 <section class="contact-hero">
     <h1>Get in Touch</h1>
-    <p>Questions, reservations, or just want to say hi? We'd love to hear from you.</p>
+    <p>Questions, reservations, or just want to say hi? We'd love to hear from you at Brew &amp; Bean Café.</p>
 </section>
 
 <section class="contact-wrapper">
     {{-- Contact details --}}
     <aside class="contact-info">
-        <h2>Visit Our Café</h2>
+        <h2>Visit Brew &amp; Bean Café</h2>
 
         <div class="info-item">
             <span class="info-icon">📍</span>
             <div>
                 <h3>Address</h3>
-                <p>123 Coffee Street, Mati City,<br>Davao Oriental, Philippines</p>
+                <p>Rizal Street, Barangay Central,<br>Mati City, Davao Oriental</p>
             </div>
         </div>
 
@@ -29,7 +29,7 @@
             <span class="info-icon">📞</span>
             <div>
                 <h3>Phone</h3>
-                <p>+63 912 345 6789</p>
+                <p>+63 917 123 4567</p>
             </div>
         </div>
 
@@ -37,7 +37,7 @@
             <span class="info-icon">✉️</span>
             <div>
                 <h3>Email</h3>
-                <p>hello@yourcafe.com</p>
+                <p>brewandbean@gmail.com</p>
             </div>
         </div>
 
