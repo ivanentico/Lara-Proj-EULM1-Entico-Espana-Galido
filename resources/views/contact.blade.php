@@ -9,13 +9,13 @@
 @section('content')
 <section class="contact-hero">
     <h1>Get in Touch</h1>
-    <p>Questions, reservations, or just want to say hi? We'd love to hear from you at Brew &amp; Bean Café.</p>
+    <p>Questions, reservations, or just want to say hi? We'd love to hear from you at Café Ethereal.</p>
 </section>
 
 <section class="contact-wrapper">
     {{-- Contact details --}}
     <aside class="contact-info">
-        <h2>Visit Brew &amp; Bean Café</h2>
+        <h2>Visit Café Ethereal</h2>
 
         <div class="info-item">
             <span class="info-icon">📍</span>
@@ -37,7 +37,7 @@
             <span class="info-icon">✉️</span>
             <div>
                 <h3>Email</h3>
-                <p>brewandbean@gmail.com</p>
+                <p>hello@cafeethereal.com</p>
             </div>
         </div>
 
