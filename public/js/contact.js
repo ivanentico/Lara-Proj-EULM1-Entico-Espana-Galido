@@ -1,90 +1,146 @@
-// ===== Contact Page: Client-side Form Validation =====
+
 document.addEventListener('DOMContentLoaded', function () {
-    const form = document.getElementById('contactForm');
-    const successMessage = document.getElementById('successMessage');
 
-    const fields = {
-        name: document.getElementById('name'),
-        email: document.getElementById('email'),
-        subject: document.getElementById('subject'),
-        message: document.getElementById('message'),
-    };
+    const contactForm = document.getElementById('contactForm');
 
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!contactForm) return;
 
-    // Show or clear an error for one field
-    function setError(field, message) {
-        const errorEl = document.getElementById(field.id + 'Error');
-        errorEl.textContent = message;
-        field.classList.toggle('invalid', message !== '');
-        field.classList.toggle('valid', message === '');
+    const formSuccess = document.getElementById('formSuccess');
+
+    const fields = [
+        {
+            id: 'name',
+            errorId: 'nameError',
+            message: 'Please enter your full name.'
+        },
+        {
+            id: 'email',
+            errorId: 'emailError',
+            message: 'Please enter your email address.'
+        },
+        {
+            id: 'subject',
+            errorId: 'subjectError',
+            message: 'Please enter a subject.'
+        },
+        {
+            id: 'message',
+            errorId: 'messageError',
+            message: 'Please enter your message.'
+        }
+    ];
+
+    // Display validation error
+    function showError(input, errorElement, message) {
+        input.classList.add('invalid');
+        input.setAttribute('aria-invalid', 'true');
+        errorElement.textContent = message;
     }
 
-    // Validate one field, return true if valid
+    // Clear validation error
+    function clearError(input, errorElement) {
+        input.classList.remove('invalid');
+        input.removeAttribute('aria-invalid');
+        errorElement.textContent = '';
+    }
+
+    // Validate individual field
     function validateField(field) {
-        const value = field.value.trim();
 
-        switch (field.id) {
-            case 'name':
-                if (value === '') return setError(field, 'Name is required.'), false;
-                if (value.length < 2) return setError(field, 'Name must be at least 2 characters.'), false;
-                break;
+        const input = document.getElementById(field.id);
+        const errorElement = document.getElementById(field.errorId);
 
-            case 'email':
-                if (value === '') return setError(field, 'Email is required.'), false;
-                if (!emailPattern.test(value)) return setError(field, 'Please enter a valid email address.'), false;
-                break;
+        const value = input.value.trim();
 
-            case 'subject':
-                if (value === '') return setError(field, 'Subject is required.'), false;
-                break;
+        clearError(input, errorElement);
 
-            case 'message':
-                if (value === '') return setError(field, 'Message is required.'), false;
-                if (value.length < 10) return setError(field, 'Message must be at least 10 characters.'), false;
-                break;
+        if (value === '') {
+            showError(input, errorElement, field.message);
+            return false;
         }
 
-        setError(field, '');
+        // Email format validation
+        if (field.id === 'email') {
+
+            const emailPattern =
+                /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!emailPattern.test(value)) {
+                showError(
+                    input,
+                    errorElement,
+                    'Please enter a valid email address.'
+                );
+
+                return false;
+            }
+        }
+
         return true;
     }
 
-    // Live validation: check when leaving a field, re-check while fixing it
-    Object.values(fields).forEach(function (field) {
-        field.addEventListener('blur', function () {
-            validateField(field);
-        });
-        field.addEventListener('input', function () {
-            if (field.classList.contains('invalid')) {
-                validateField(field);
+    // Clear errors while typing
+    fields.forEach(function (field) {
+
+        const input = document.getElementById(field.id);
+        const errorElement = document.getElementById(field.errorId);
+
+        input.addEventListener('input', function () {
+
+            clearError(input, errorElement);
+
+            if (!formSuccess.hidden) {
+                formSuccess.hidden = true;
             }
-            successMessage.hidden = true;
         });
+
     });
 
-    // Submit handler
-    form.addEventListener('submit', function (event) {
+    // Form submission
+    contactForm.addEventListener('submit', function (event) {
+
         event.preventDefault();
 
+        formSuccess.hidden = true;
+
         let isFormValid = true;
-        Object.values(fields).forEach(function (field) {
-            if (!validateField(field)) {
+
+        fields.forEach(function (field) {
+
+            const isValid = validateField(field);
+
+            if (!isValid) {
                 isFormValid = false;
             }
+
         });
 
-        if (isFormValid) {
-            successMessage.hidden = false;
-            successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            form.reset();
-            Object.values(fields).forEach(function (field) {
-                field.classList.remove('valid', 'invalid');
-            });
-        } else {
-            successMessage.hidden = true;
-            // Focus the first invalid field
-            const firstInvalid = form.querySelector('.invalid');
-            if (firstInvalid) firstInvalid.focus();
+        if (!isFormValid) {
+
+            const firstInvalid =
+                contactForm.querySelector('.invalid');
+
+            if (firstInvalid) {
+                firstInvalid.focus();
+            }
+
+            return;
         }
+
+        // Display success message
+        formSuccess.hidden = false;
+
+        contactForm.reset();
+
+        formSuccess.scrollIntoView({
+            behavior: 'smooth',
+            block: 'nearest'
+        });
+
+        console.log(
+            'Café Ethereal contact form validation successful!'
+        );
+
     });
+
 });
