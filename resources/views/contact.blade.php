@@ -404,32 +404,6 @@
 </section>
 
 
-<!-- ================= CLOSING SECTION ================= -->
-<section class="contact-ending">
-
-    <span class="contact-eyebrow">
-        A LITTLE ESCAPE IN EVERY CUP
-    </span>
-
-    <h2>
-        We Can't Wait
-        <em>to Welcome You.</em>
-    </h2>
-
-    <p>
-        Good coffee, genuine connections, and beautiful moments
-        are always waiting for you at Café Ethereal.
-    </p>
-
-    <a href="{{ url('/') }}" class="contact-back-btn">
-
-        Back to Home
-        <span aria-hidden="true">↗</span>
-
-    </a>
-
-</section>
-
 @endsection
 
 
