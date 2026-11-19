@@ -34,21 +34,6 @@
             <small>A LITTLE ESCAPE IN EVERY CUP.</small>
         </div>
     </div>
-
-    <div class="about-hero-visual">
-        <img
-            src="{{ asset('images/about-cafe.jpg') }}"
-            alt="Café Ethereal specialty coffee interior"
-        >
-
-        <div class="hero-floating-card">
-            <span>OUR PHILOSOPHY</span>
-            <h3>Good coffee. Slow moments. Warm memories.</h3>
-        </div>
-
-        <span class="hero-image-number">01 / 04</span>
-    </div>
-
 </section>
 
 
